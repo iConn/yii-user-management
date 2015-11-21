@@ -410,7 +410,7 @@ class YumUser extends YumActiveRecord
 
     }
     if (Yum::hasModule('profile')) {
-      Yii::import('user.profile.models.*');
+      Yii::import('profile.models.*');
       $relations['visits'] = array(
         self::HAS_MANY, 'YumProfileVisit', 'visited_id');
       $relations['visited'] = array(
@@ -497,7 +497,7 @@ class YumUser extends YumActiveRecord
   }
 
   public function registerByHybridAuth($hybridAuthProfile) {
-    Yii::import('user.profile.models.*');
+    Yii::import('profile.models.*');
     $profile = new YumProfile();
 
     $profile->firstname = $hybridAuthProfile->firstName;
@@ -613,7 +613,7 @@ class YumUser extends YumActiveRecord
    * -3 : Profile found, but no user - database inconsistency?
    */
   public static function activate($email, $key) {
-    Yii::import('user.profile.models.*');
+    Yii::import('profile.models.*');
 
     if ($profile = YumProfile::model()->find("email = :email", array(
       ':email' => $email))) {
